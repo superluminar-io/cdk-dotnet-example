@@ -20,8 +20,14 @@ $ make deploy
 ```
 
 Use the URL from the stack output:
-```
+```sh
+# Create note
+$ curl -X POST https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/notes --data '{ "title": "Hello World", "content": "Mollit adipisicing ut dolore aliqua." }' -H 'Content-Type: application/json'
+
+# List notes
 $ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/notes
+
+# Get note
 $ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/notes/:id
 ```
 

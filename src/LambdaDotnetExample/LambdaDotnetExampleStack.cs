@@ -31,6 +31,7 @@ namespace LambdaDotnetExample
                 Code = Code.FromAsset("./functions/ListNotes/src/ListNotes/bin/Release/netcoreapp3.1/publish"),
                 Handler = "ListNotes::ListNotes.Function::FunctionHandler",
                 Timeout = Duration.Seconds(10),
+                MemorySize = 1024,
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
@@ -59,6 +60,7 @@ namespace LambdaDotnetExample
                 Code = Code.FromAsset("./functions/GetNote/src/GetNote/bin/Release/netcoreapp3.1/publish"),
                 Handler = "GetNote::GetNote.Function::FunctionHandler",
                 Timeout = Duration.Seconds(10),
+                MemorySize = 1024,
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
@@ -78,6 +80,35 @@ namespace LambdaDotnetExample
                 Path = "/notes/{id}",
                 Integration = integrationGetNote,
                 Methods = methodsGetNote,
+            });
+
+            // Create note
+            var functionCreateNote = new Function(this, "FunctionCreateNote", new FunctionProps
+            {
+                Runtime = Runtime.DOTNET_CORE_3_1,
+                Code = Code.FromAsset("./functions/CreateNote/src/CreateNote/bin/Release/netcoreapp3.1/publish"),
+                Handler = "CreateNote::CreateNote.Function::FunctionHandler",
+                Timeout = Duration.Seconds(10),
+                MemorySize = 1024,
+                Environment = new Dictionary<string, string>
+                {
+                    { "TABLE_NAME", table.TableName }
+                }
+            });
+
+            table.GrantFullAccess(functionCreateNote);
+
+            var integrationCreateNote = new LambdaProxyIntegration(new LambdaProxyIntegrationProps
+            {
+                Handler = functionCreateNote,
+            });
+
+            HttpMethod[] methodsCreateNote = { HttpMethod.POST };
+            api.AddRoutes(new AddRoutesOptions
+            {
+                Path = "/notes",
+                Integration = integrationCreateNote,
+                Methods = methodsCreateNote,
             });
 
             new CfnOutput(this, "NotesApiUrl", new CfnOutputProps
