@@ -52,6 +52,11 @@ namespace LambdaDotnetExample
                 Integration = integrationGetNote,
                 Methods = methodsGetNote,
             });
+
+            new CfnOutput(this, "NotesApiUrl", new CfnOutputProps
+            {
+                Value = api.ApiEndpoint
+            });
         }
     }
 }
