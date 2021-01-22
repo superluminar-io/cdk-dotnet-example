@@ -21,7 +21,8 @@ $ make deploy
 
 Use the URL from the stack output:
 ```
-$ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/prod/
+$ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/notes
+$ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/notes/:id
 ```
 
 ## Credits
