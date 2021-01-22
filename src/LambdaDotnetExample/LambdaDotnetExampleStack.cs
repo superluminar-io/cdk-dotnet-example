@@ -8,16 +8,16 @@ namespace LambdaDotnetExample
     {
         public LambdaDotnetExampleStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            var hello = new Function(this, "HelloHandler", new FunctionProps
+            var function = new Function(this, "DotNet", new FunctionProps
             {
-                Runtime = Runtime.NODEJS_12_X,
-                Code = Code.FromAsset("lambda"),
-                Handler = "hello.handler"
+                Runtime = Runtime.DOTNET_CORE_3_1,
+                Code = Code.FromAsset("./functions/LambdaDotnetExample/src/LambdaDotnetExample/bin/Release/netcoreapp3.1/publish"),
+                Handler = "LambdaDotnetExample::LambdaDotnetExample.Function::FunctionHandler"
             });
 
             new LambdaRestApi(this, "Endpoint", new LambdaRestApiProps
             {
-                Handler = hello
+                Handler = function
             });
         }
     }
