@@ -1,10 +1,21 @@
-# Welcome to your CDK C# project!
+# Lambda .NET Example
 
-This is a blank project for C# development with CDK.
+This is a simple example project bootstrapping a CDK project with C#. The goal is to create and deploy a lambda function.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Prerequisites
+* NodeJS / NPM
+* AWS CLI
+* Dotnet
 
-It uses the [.NET Core CLI](https://docs.microsoft.com/dotnet/articles/core/) to compile and execute your project.
+## Getting started
+
+Before deploying the application, make sure you have AWS credentials in your terminal.
+```sh
+$ git clone git@github.com:superluminar-io/lambda-dotnet-example
+$ cd lambda-dotnet-example
+$ npm install
+$ npx cdk deploy
+```
 
 ## Useful commands
 

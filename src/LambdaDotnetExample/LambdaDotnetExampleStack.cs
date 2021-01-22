@@ -1,12 +1,18 @@
 using Amazon.CDK;
+using Amazon.CDK.AWS.Lambda;
 
 namespace LambdaDotnetExample
 {
     public class LambdaDotnetExampleStack : Stack
     {
-        internal LambdaDotnetExampleStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
+        public LambdaDotnetExampleStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            // The code that defines your stack goes here
+            var hello = new Function(this, "HelloHandler", new FunctionProps
+            {
+                Runtime = Runtime.NODEJS_12_X,
+                Code = Code.FromAsset("lambda"),
+                Handler = "hello.handler"
+            });
         }
     }
 }

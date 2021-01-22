@@ -1,0 +1,14 @@
+{
+  "name": "lambda-dotnet-example",
+  "version": "1.0.0",
+  "description": "This is an example project for C# development with CDK.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cdk": "^1.86.0"
+  }
+}
