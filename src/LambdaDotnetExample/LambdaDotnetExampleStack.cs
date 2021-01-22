@@ -30,13 +30,14 @@ namespace LambdaDotnetExample
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Code = Code.FromAsset("./functions/ListNotes/src/ListNotes/bin/Release/netcoreapp3.1/publish"),
                 Handler = "ListNotes::ListNotes.Function::FunctionHandler",
+                Timeout = Duration.Seconds(10),
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
                 }
             });
 
-            table.GrantReadData(functionListNotes);
+            table.GrantFullAccess(functionListNotes);
 
             var integrationListNotes = new LambdaProxyIntegration(new LambdaProxyIntegrationProps
             {
@@ -57,13 +58,14 @@ namespace LambdaDotnetExample
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Code = Code.FromAsset("./functions/GetNote/src/GetNote/bin/Release/netcoreapp3.1/publish"),
                 Handler = "GetNote::GetNote.Function::FunctionHandler",
+                Timeout = Duration.Seconds(10),
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
                 }
             });
 
-            table.GrantReadData(functionGetNote);
+            table.GrantFullAccess(functionGetNote);
 
             var integrationGetNote = new LambdaProxyIntegration(new LambdaProxyIntegrationProps
             {
