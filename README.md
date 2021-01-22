@@ -26,4 +26,5 @@ $ curl https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/prod/
 
 ## Credits
 
-This project is based on the [AWS CDK Workshop](https://cdkworkshop.com/40-dotnet.html).
+* [AWS CDK Workshop](https://cdkworkshop.com/40-dotnet.html).
+* [Lambda .NET Example](https://github.com/aws-samples/aws-cdk-examples/tree/master/csharp/capitalize-string)
