@@ -7,9 +7,9 @@ using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 
-using LambdaDotnetExample;
+using GetNote;
 
-namespace LambdaDotnetExample.Tests
+namespace GetNote.Tests
 {
     public class FunctionTest
     {
