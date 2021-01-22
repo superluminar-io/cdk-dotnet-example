@@ -23,3 +23,7 @@ $ npx cdk deploy
 * `cdk deploy`       deploy this stack to your default AWS account/region
 * `cdk diff`         compare deployed stack with current state
 * `cdk synth`        emits the synthesized CloudFormation template
+
+## Credits
+
+This project is based on the [AWS CDK Workshop](https://cdkworkshop.com/40-dotnet.html).
