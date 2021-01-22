@@ -24,8 +24,10 @@ namespace GetNote
     {
         public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest apigProxyEvent, ILambdaContext context)
         {
+            var id = apigProxyEvent.PathParameters["id"];
+
             var note = new Note();
-            note.id = "abc";
+            note.id = id;
             note.title = "Hello World";
             note.content = "Culpa qui veniam sint minim ut aliquip officia veniam voluptate.";
 
