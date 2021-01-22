@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using Amazon.CDK;
 using Amazon.CDK.AWS.Lambda;
 using Amazon.CDK.AWS.APIGatewayv2;
 using Amazon.CDK.AWS.APIGatewayv2.Integrations;
+using Amazon.CDK.AWS.DynamoDB;
 
 namespace LambdaDotnetExample
 {
@@ -9,6 +11,17 @@ namespace LambdaDotnetExample
     {
         public LambdaDotnetExampleStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
+            var table = new Table(this, "NotesTable", new TableProps
+            {
+                PartitionKey = new Attribute
+                {
+                    Name = "id",
+                    Type = AttributeType.STRING
+                },
+                RemovalPolicy = RemovalPolicy.DESTROY,
+                BillingMode = BillingMode.PAY_PER_REQUEST,
+            });
+
             var api = new HttpApi(this, "NotesApi");
 
             // List notes
@@ -16,8 +29,14 @@ namespace LambdaDotnetExample
             {
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Code = Code.FromAsset("./functions/ListNotes/src/ListNotes/bin/Release/netcoreapp3.1/publish"),
-                Handler = "ListNotes::ListNotes.Function::FunctionHandler"
+                Handler = "ListNotes::ListNotes.Function::FunctionHandler",
+                Environment = new Dictionary<string, string>
+                {
+                    { "TABLE_NAME", table.TableName }
+                }
             });
+
+            table.GrantReadData(functionListNotes);
 
             var integrationListNotes = new LambdaProxyIntegration(new LambdaProxyIntegrationProps
             {
@@ -37,8 +56,14 @@ namespace LambdaDotnetExample
             {
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Code = Code.FromAsset("./functions/GetNote/src/GetNote/bin/Release/netcoreapp3.1/publish"),
-                Handler = "GetNote::GetNote.Function::FunctionHandler"
+                Handler = "GetNote::GetNote.Function::FunctionHandler",
+                Environment = new Dictionary<string, string>
+                {
+                    { "TABLE_NAME", table.TableName }
+                }
             });
+
+            table.GrantReadData(functionGetNote);
 
             var integrationGetNote = new LambdaProxyIntegration(new LambdaProxyIntegrationProps
             {
