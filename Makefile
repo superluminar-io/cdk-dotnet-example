@@ -1,5 +1,6 @@
 dependencies:
 	npm i
+	dotnet restore
 
 FUNCTIONS = $(shell ls functions)
 build:
@@ -15,6 +16,3 @@ deploy: build
 
 diff: build
 	npx cdk diff
-
-generate-sln:
-	dotnet sln lambda-dotnet-example.sln add **/**/*.csproj
