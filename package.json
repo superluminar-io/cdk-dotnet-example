@@ -10,5 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "cdk": "^1.86.0"
+  },
+  "engines": {
+    "node": "15.6.0"
   }
 }
