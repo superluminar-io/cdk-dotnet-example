@@ -1,13 +1,13 @@
 ﻿using Amazon.CDK;
 
-namespace LambdaDotnetExample
+namespace Infrastructure
 {
     sealed class Program
     {
         public static void Main(string[] args)
         {
             var app = new App();
-            new LambdaDotnetExampleStack(app, "LambdaDotnetExampleStack");
+            new InfrastructureStack(app, "InfrastructureStack");
             app.Synth();
         }
     }

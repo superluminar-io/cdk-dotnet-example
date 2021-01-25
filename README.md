@@ -4,9 +4,8 @@ This is a simple example project bootstrapping a CDK project with C#. The goal i
 
 ## Prerequisites
 * [NodeJS / NPM](https://nodejs.org/en/)
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+* [Docker](https://www.docker.com/)
 * [Dotnet](https://dotnet.microsoft.com/download)
-* [Dotnet Lambda CLI](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html)
 
 ## Getting started
 

@@ -5,11 +5,11 @@ using Amazon.CDK.AWS.APIGatewayv2;
 using Amazon.CDK.AWS.APIGatewayv2.Integrations;
 using Amazon.CDK.AWS.DynamoDB;
 
-namespace LambdaDotnetExample
+namespace Infrastructure
 {
-    public class LambdaDotnetExampleStack : Stack
+    public class InfrastructureStack : Stack
     {
-        public LambdaDotnetExampleStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
+        public InfrastructureStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
             var table = new Table(this, "NotesTable", new TableProps
             {
@@ -25,11 +25,9 @@ namespace LambdaDotnetExample
             var api = new HttpApi(this, "NotesApi");
 
             // List notes
-            var functionListNotes = new Function(this, "FunctionListNotes", new FunctionProps
+            var functionListNotes = new DockerImageFunction(this, "FunctionListNotes", new DockerImageFunctionProps
             {
-                Runtime = Runtime.DOTNET_CORE_3_1,
-                Code = Code.FromAsset("./functions/ListNotes/src/ListNotes/bin/Release/netcoreapp3.1/publish"),
-                Handler = "ListNotes::ListNotes.Function::FunctionHandler",
+                Code = DockerImageCode.FromImageAsset("src/Functions/ListNotes"),
                 Timeout = Duration.Seconds(10),
                 MemorySize = 1024,
                 Environment = new Dictionary<string, string>
@@ -54,11 +52,9 @@ namespace LambdaDotnetExample
             });
 
             // Get note
-            var functionGetNote = new Function(this, "FunctionGetNote", new FunctionProps
+            var functionGetNote = new DockerImageFunction(this, "FunctionGetNote", new DockerImageFunctionProps
             {
-                Runtime = Runtime.DOTNET_CORE_3_1,
-                Code = Code.FromAsset("./functions/GetNote/src/GetNote/bin/Release/netcoreapp3.1/publish"),
-                Handler = "GetNote::GetNote.Function::FunctionHandler",
+                Code = DockerImageCode.FromImageAsset("src/Functions/GetNote"),
                 Timeout = Duration.Seconds(10),
                 MemorySize = 1024,
                 Environment = new Dictionary<string, string>
@@ -83,11 +79,9 @@ namespace LambdaDotnetExample
             });
 
             // Create note
-            var functionCreateNote = new Function(this, "FunctionCreateNote", new FunctionProps
+            var functionCreateNote = new DockerImageFunction(this, "FunctionCreateNote", new DockerImageFunctionProps
             {
-                Runtime = Runtime.DOTNET_CORE_3_1,
-                Code = Code.FromAsset("./functions/CreateNote/src/CreateNote/bin/Release/netcoreapp3.1/publish"),
-                Handler = "CreateNote::CreateNote.Function::FunctionHandler",
+                Code = DockerImageCode.FromImageAsset("src/Functions/CreateNote"),
                 Timeout = Duration.Seconds(10),
                 MemorySize = 1024,
                 Environment = new Dictionary<string, string>
