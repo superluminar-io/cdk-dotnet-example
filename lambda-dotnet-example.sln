@@ -25,11 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F443A8F6-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListNotes.Tests", "functions\ListNotes\test\ListNotes.Tests\ListNotes.Tests.csproj", "{78E72124-5847-49FB-9FC5-7385877FA6FC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "node_modules", "node_modules", "{A88FDDCE-9F7C-4ED4-BCF7-F3116817C2AF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdk", "cdk", "{32722F4E-77A5-4A6F-8C2F-C375AC8F3C79}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "node_modules", "node_modules", "{B217C7D8-9AA4-4714-B88B-F28395F6C32D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aws-cdk", "aws-cdk", "{8A74B92D-A309-4D55-B92D-47F13C69BDD9}"
 EndProject
@@ -45,15 +41,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{CD3D3E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FBEC7386-1E90-4EED-8459-2BB4ED806CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "%name.PascalCased%.template", "node_modules\cdk\node_modules\aws-cdk\lib\init-templates\v1\app\csharp\src\%name.PascalCased%\%name.PascalCased%.template.csproj", "{CD7ADED7-79A9-40FF-9D4B-96260E97A056}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample-app", "sample-app", "{C7A10CFC-DCB0-479C-8A86-5266EE7770B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{B0D26435-52D9-4274-9EB5-D1D9D19D4379}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11DC1154-645D-4493-A63B-85306BA5563D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "%name.PascalCased%.template", "node_modules\cdk\node_modules\aws-cdk\lib\init-templates\v1\sample-app\csharp\src\%name.PascalCased%\%name.PascalCased%.template.csproj", "{4974E0D7-CA37-43B8-A847-6B7639D69C19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "v2", "v2", "{2FF604C0-2A3A-465B-AB0D-70586D9DB78D}"
 EndProject
@@ -63,15 +55,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{F06781
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{50E50564-899F-4C90-A11B-C7C953307C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "%name.PascalCased%.template", "node_modules\cdk\node_modules\aws-cdk\lib\init-templates\v2\app\csharp\src\%name.PascalCased%\%name.PascalCased%.template.csproj", "{C72E8482-EC1D-4643-A89C-7141E45DCE39}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample-app", "sample-app", "{A5AA5000-2D32-41C5-B2C9-D440728CD03A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{B182E824-F1CC-4D39-A6FB-AD9DB2C41A5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0714D307-D605-4230-A50A-A50487A72B0D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "%name.PascalCased%.template", "node_modules\cdk\node_modules\aws-cdk\lib\init-templates\v2\sample-app\csharp\src\%name.PascalCased%\%name.PascalCased%.template.csproj", "{32AA9238-5C1B-4FF0-A3A6-8E7E285C6B14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E3A857E0-FF07-4977-99DA-CD6A570B7766}"
 EndProject

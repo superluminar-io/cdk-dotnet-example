@@ -6,7 +6,7 @@ build:
 	@for f in $(FUNCTIONS); do \
         cd functions/$$f/src/$$f && \
 		dotnet build && \
-		dotnet-lambda package && \
+		dotnet lambda package && \
 		cd ../../../../; \
     done
 
@@ -15,3 +15,6 @@ deploy: build
 
 diff: build
 	npx cdk diff
+
+generate-sln:
+	dotnet sln lambda-dotnet-example.sln add **/**/*.csproj
