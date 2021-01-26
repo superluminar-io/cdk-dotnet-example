@@ -14,8 +14,12 @@ Before deploying the application, make sure you have AWS credentials in your ter
 ```sh
 $ git clone git@github.com:superluminar-io/lambda-dotnet-example
 $ cd lambda-dotnet-example
-$ make dependencies
-$ make deploy
+
+# Install dependencies
+$ npm i
+
+# Deploy
+$ npx cdk deploy
 ```
 
 Use the URL from the stack output:
