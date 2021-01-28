@@ -1,6 +1,6 @@
-# Lambda .NET Example
+# CDK .NET Example
 
-This is a simple example project bootstrapping a CDK project with C#. The goal is to create and deploy a lambda function.
+This is a simple example project bootstrapping a CDK project with C#.
 
 ## Prerequisites
 * [NodeJS / NPM](https://nodejs.org/en/)
@@ -12,8 +12,8 @@ This is a simple example project bootstrapping a CDK project with C#. The goal i
 Before deploying the application, make sure you have AWS credentials in your terminal.
 
 ```sh
-$ git clone git@github.com:superluminar-io/lambda-dotnet-example
-$ cd lambda-dotnet-example
+$ git clone git@github.com:superluminar-io/cdk-dotnet-example
+$ cd cdk-dotnet-example
 
 # Install dependencies
 $ npm i
