@@ -1,16 +1,15 @@
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Text.Json;
-
-using Amazon.Lambda.Core;
-using Amazon.Lambda.APIGatewayEvents;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Lambda.APIGatewayEvents;
+using Amazon.Lambda.Core;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace Function
+namespace GetNote
 {
     public class Note
     {
@@ -21,9 +20,13 @@ namespace Function
 
     public class Function
     {
-        private static AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+        private AmazonDynamoDBClient client = new AmazonDynamoDBClient();
 
-        public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest apigProxyEvent, ILambdaContext context)
+        public Function() { }
+
+        public Function(AmazonDynamoDBClient c) => client = c;
+
+        public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest apigProxyEvent)
         {
             var id = apigProxyEvent.PathParameters["id"];
             var tableName = System.Environment.GetEnvironmentVariable("TABLE_NAME");
@@ -31,7 +34,7 @@ namespace Function
             var result = await client.GetItemAsync(new GetItemRequest
             {
                 TableName = tableName,
-                Key = new Dictionary<string, AttributeValue>()
+                Key = new Dictionary<string, AttributeValue>
                 {
                     { "id", new AttributeValue {
                         S = id
