@@ -29,7 +29,6 @@ namespace Infrastructure
             {
                 Code = DockerImageCode.FromImageAsset("src/Functions/ListNotes"),
                 Timeout = Duration.Seconds(10),
-                MemorySize = 1024,
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
@@ -56,7 +55,6 @@ namespace Infrastructure
             {
                 Code = DockerImageCode.FromImageAsset("src/Functions/GetNote"),
                 Timeout = Duration.Seconds(10),
-                MemorySize = 1024,
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
@@ -83,7 +81,6 @@ namespace Infrastructure
             {
                 Code = DockerImageCode.FromImageAsset("src/Functions/CreateNote"),
                 Timeout = Duration.Seconds(10),
-                MemorySize = 1024,
                 Environment = new Dictionary<string, string>
                 {
                     { "TABLE_NAME", table.TableName }
