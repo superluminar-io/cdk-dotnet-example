@@ -2,6 +2,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Amazon.Lambda.APIGatewayEvents;
 using Moq;
+using Shared;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading;

@@ -1,11 +1,9 @@
+# Dockerfile to build Lambda functions
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim as build
+ARG FUNCTION_NAME
 WORKDIR /src
-COPY "*.csproj" "ListNotes/ListNotes.csproj"
-RUN dotnet restore "ListNotes/ListNotes.csproj"
-
-WORKDIR "/src/ListNotes"
 COPY . .
-RUN dotnet publish "ListNotes.csproj" \
+RUN dotnet publish "Functions/$FUNCTION_NAME/$FUNCTION_NAME.csproj" \
             --configuration Release \ 
             --runtime linux-x64 \
             --self-contained false \ 
@@ -15,5 +13,3 @@ RUN dotnet publish "ListNotes.csproj" \
 FROM public.ecr.aws/lambda/dotnet:5.0
 WORKDIR /var/task
 COPY --from=build /app/publish .
-
-CMD [ "ListNotes::ListNotes.Function::FunctionHandler" ]
