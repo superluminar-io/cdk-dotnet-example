@@ -1,28 +1,21 @@
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Text.Json;
-using System.Net;
-
-using Amazon.Lambda.Core;
-using Amazon.Lambda.APIGatewayEvents;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Lambda.APIGatewayEvents;
+using Amazon.Lambda.Core;
+using Shared;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace Function
+namespace CreateNote
 {
     public class RequestBody
     {
-        public string title { get; set; }
-        public string content { get; set; }
-    }
-
-    public class Note
-    {
-        public string id { get; set; }
         public string title { get; set; }
         public string content { get; set; }
     }

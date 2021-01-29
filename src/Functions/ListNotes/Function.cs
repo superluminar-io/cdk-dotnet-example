@@ -1,6 +1,7 @@
 using Amazon.DynamoDBv2;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using Shared;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -10,13 +11,6 @@ using System.Threading.Tasks;
 
 namespace ListNotes
 {
-    public class Note
-    {
-        public string id { get; set; }
-        public string title { get; set; }
-        public string content { get; set; }
-    }
-
     public class Function
     {
         private AmazonDynamoDBClient client = new AmazonDynamoDBClient();

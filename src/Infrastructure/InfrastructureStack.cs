@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using Amazon.CDK;
-using Amazon.CDK.AWS.Lambda;
 using Amazon.CDK.AWS.APIGatewayv2;
 using Amazon.CDK.AWS.APIGatewayv2.Integrations;
 using Amazon.CDK.AWS.DynamoDB;
+using Amazon.CDK.AWS.Lambda;
+using System.Collections.Generic;
 
 namespace Infrastructure
 {
@@ -27,7 +27,14 @@ namespace Infrastructure
             // List notes
             var functionListNotes = new DockerImageFunction(this, "FunctionListNotes", new DockerImageFunctionProps
             {
-                Code = DockerImageCode.FromImageAsset("src/Functions/ListNotes"),
+                Code = DockerImageCode.FromImageAsset("./src", new AssetImageCodeProps
+                {
+                    BuildArgs = new Dictionary<string, string>
+                    {
+                        { "FUNCTION_NAME", "ListNotes" }
+                    },
+                    Cmd = new[] { "ListNotes::ListNotes.Function::FunctionHandler" }
+                }),
                 Timeout = Duration.Seconds(10),
                 Environment = new Dictionary<string, string>
                 {
@@ -53,7 +60,14 @@ namespace Infrastructure
             // Get note
             var functionGetNote = new DockerImageFunction(this, "FunctionGetNote", new DockerImageFunctionProps
             {
-                Code = DockerImageCode.FromImageAsset("src/Functions/GetNote"),
+                Code = DockerImageCode.FromImageAsset("./src", new AssetImageCodeProps
+                {
+                    BuildArgs = new Dictionary<string, string>
+                    {
+                        { "FUNCTION_NAME", "GetNote" }
+                    },
+                    Cmd = new[] { "GetNote::GetNote.Function::FunctionHandler" }
+                }),
                 Timeout = Duration.Seconds(10),
                 Environment = new Dictionary<string, string>
                 {
@@ -79,7 +93,14 @@ namespace Infrastructure
             // Create note
             var functionCreateNote = new DockerImageFunction(this, "FunctionCreateNote", new DockerImageFunctionProps
             {
-                Code = DockerImageCode.FromImageAsset("src/Functions/CreateNote"),
+                Code = DockerImageCode.FromImageAsset("./src", new AssetImageCodeProps
+                {
+                    BuildArgs = new Dictionary<string, string>
+                    {
+                        { "FUNCTION_NAME", "CreateNote" }
+                    },
+                    Cmd = new[] { "CreateNote::CreateNote.Function::FunctionHandler" }
+                }),
                 Timeout = Duration.Seconds(10),
                 Environment = new Dictionary<string, string>
                 {
