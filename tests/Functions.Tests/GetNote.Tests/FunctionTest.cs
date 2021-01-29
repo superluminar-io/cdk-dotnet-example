@@ -17,6 +17,7 @@ namespace GetNote.Tests
         {
             var tableName = "NOTES";
             System.Environment.SetEnvironmentVariable("TABLE_NAME", tableName);
+            System.Environment.SetEnvironmentVariable("AWS_REGION", "eu-central-1");
 
             var id = "abc";
             var title = "hello world";

@@ -14,9 +14,9 @@ namespace GetNote
 {
     public class Function
     {
-        private AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+        private AmazonDynamoDBClient client;
 
-        public Function() { }
+        public Function() => client = new AmazonDynamoDBClient();
 
         public Function(AmazonDynamoDBClient c) => client = c;
 

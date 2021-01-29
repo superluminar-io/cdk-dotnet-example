@@ -16,6 +16,7 @@ namespace ListNotes.Tests
         {
             var tableName = "NOTES";
             System.Environment.SetEnvironmentVariable("TABLE_NAME", tableName);
+            System.Environment.SetEnvironmentVariable("AWS_REGION", "eu-central-1");
 
             var attributesToGet = new List<string> { "id", "title", "content" };
             var item1 = new Dictionary<string, AttributeValue> {

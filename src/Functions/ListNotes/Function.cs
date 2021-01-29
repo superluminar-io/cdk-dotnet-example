@@ -13,9 +13,9 @@ namespace ListNotes
 {
     public class Function
     {
-        private AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+        private AmazonDynamoDBClient client;
 
-        public Function() { }
+        public Function() => client = new AmazonDynamoDBClient();
 
         public Function(AmazonDynamoDBClient c) => client = c;
 
@@ -24,7 +24,7 @@ namespace ListNotes
         {
             var tableName = System.Environment.GetEnvironmentVariable("TABLE_NAME");
             var response = await client.ScanAsync(tableName, new List<string> { "id", "title", "content" });
-            var notes = response.Items.ConvertAll<Note>((values) => new Note
+            var notes = response.Items.ConvertAll<Note>(values => new Note
             {
                 id = values["id"].S,
                 title = values["title"].S,
