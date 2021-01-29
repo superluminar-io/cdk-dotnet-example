@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim as build
 WORKDIR /src
-COPY "*.csproj" "Function/Function.csproj"
-RUN dotnet restore "Function/Function.csproj"
+COPY "*.csproj" "ListNotes/ListNotes.csproj"
+RUN dotnet restore "ListNotes/ListNotes.csproj"
 
-WORKDIR "/src/Function"
+WORKDIR "/src/ListNotes"
 COPY . .
-RUN dotnet publish "Function.csproj" \
+RUN dotnet publish "ListNotes.csproj" \
             --configuration Release \ 
             --runtime linux-x64 \
             --self-contained false \ 
@@ -16,4 +16,4 @@ FROM public.ecr.aws/lambda/dotnet:5.0
 WORKDIR /var/task
 COPY --from=build /app/publish .
 
-CMD [ "Function::Function.Function::FunctionHandler" ]
+CMD [ "ListNotes::ListNotes.Function::FunctionHandler" ]
