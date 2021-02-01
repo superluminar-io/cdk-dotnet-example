@@ -1,4 +1,5 @@
 using Amazon.CDK;
+using Amazon.CDK.AWS.CodeBuild;
 using Amazon.CDK.AWS.CodePipeline;
 using Amazon.CDK.AWS.CodePipeline.Actions;
 using Amazon.CDK.Pipelines;
@@ -30,7 +31,10 @@ namespace Infrastructure.Stacks
                 {
                     SourceArtifact = sourceArtifact,
                     CloudAssemblyArtifact = cloudAssemblyArtifact,
-                    InstallCommand = "apt-get install -y dotnet-sdk-5.0 && npm ci",
+                    Environment = new BuildEnvironment
+                    {
+                        BuildImage = LinuxBuildImage.STANDARD_5_0
+                    }
                 })
             });
 
