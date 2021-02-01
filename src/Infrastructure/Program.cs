@@ -1,4 +1,5 @@
 ﻿using Amazon.CDK;
+using Infrastructure.Stacks;
 
 namespace Infrastructure
 {
@@ -7,7 +8,7 @@ namespace Infrastructure
         public static void Main(string[] args)
         {
             var app = new App();
-            new InfrastructureStack(app, "InfrastructureStack");
+            new PipelineStack(app, "PipelineStack");
             app.Synth();
         }
     }

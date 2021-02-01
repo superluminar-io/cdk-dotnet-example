@@ -5,11 +5,11 @@ using Amazon.CDK.AWS.DynamoDB;
 using Amazon.CDK.AWS.Lambda;
 using System.Collections.Generic;
 
-namespace Infrastructure
+namespace Infrastructure.Stacks
 {
-    public class InfrastructureStack : Stack
+    public class ApiStack : Stack
     {
-        public InfrastructureStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
+        public ApiStack(Construct scope, string id, StackProps props = null) : base(scope, id, props)
         {
             var table = new Table(this, "NotesTable", new TableProps
             {

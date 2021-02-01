@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "cdk": "^1.86.0"
+    "cdk": "^1.87.1"
   },
   "engines": {
     "node": "15.6.0"
