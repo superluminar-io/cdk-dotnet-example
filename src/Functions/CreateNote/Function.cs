@@ -22,9 +22,13 @@ namespace CreateNote
 
     public class Function
     {
-        private static AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+        private AmazonDynamoDBClient client;
 
-        public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest apigProxyEvent, ILambdaContext context)
+        public Function() => client = new AmazonDynamoDBClient();
+
+        public Function(AmazonDynamoDBClient c) => client = c;
+
+        public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest apigProxyEvent)
         {
             var requestBody = JsonSerializer.Deserialize<RequestBody>(apigProxyEvent.Body);
 
